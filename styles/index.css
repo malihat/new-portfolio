@@ -253,7 +253,7 @@ div.modal-footer {
     cursor: pointer;
 }
 #project-title:hover {
-    font-weight: 400;
+    font-weight: bold;
 }
 
 /* Contact Section */
