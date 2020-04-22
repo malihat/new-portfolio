@@ -19,6 +19,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="images/favicon.png">
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -314,7 +316,7 @@
 						<div class="modal-header text-center">
 							<h4 class="modal-title"> React Gallery App </h4>
 						</div>
-						<p> led information about the user will be available. I have changed the background color and added box shadow to the modal. jQuery and JavaScript were used. </p>
+						<p> This project is about a single page app that uses API to fetch data specific to the user’s requirement. The project shows list of cat’s images when the page first loads. There are 3 buttons and when the user clicks a button the specific data is fetched. User can also search by typing in the input search field. React and React-Router were used. </p>
 						<div class="modal-footer text-center">
 							<button type="button" class="btn btn-secondary project-links"> <i class="fa fa-github"></i> <a href= "https://github.com/malihat/techdegree-project-7" target="_blank">  Github </a> </button>
 							<button type="button" class="btn btn-secondary project-links"> <i class="fa fa-laptop"></i> <a href="https://malihat-techdegree-project-7.glitch.me/cats" class="links" target="_blank"> Project </a> </button> 
@@ -334,10 +336,10 @@
 						<div class="modal-header text-center">
 							<h4 class="modal-title"> List Pagination and Filtering</h4>
 						</div>
-						<p> This project is about a single page app that uses API to fetch data specific to the user’s requirement. The project shows list of cat’s images when the page first loads. There are 3 buttons and when the user clicks a button the specific data is fetched. User can also search by typing in the input search field. React and React-Router were used. </p>
+						<p> It provides a list of students which is paginated by displaying 10 students per page. User can also use a search bar to filter from students' list. HTML, CSS and JavaScript was used. </p>
 						<div class="modal-footer text-center">
-							<button type="button" class="btn btn-secondary project-links"> <i class="fa fa-github"></i> <a href= "https://github.com/malihat/techdegree-project-6" target="_blank">  Github </a> </button>
-							<button type="button" class="btn btn-secondary project-links"> <i class="fa fa-laptop"></i> <a href="https://malihat.github.io/techdegree-project-6/" class="links" target="_blank"> Project </a> </button> 
+							<button type="button" class="btn btn-secondary project-links"> <i class="fa fa-github"></i> <a href= "https://github.com/malihat/techdegree-project-2" target="_blank">  Github </a> </button>
+							<button type="button" class="btn btn-secondary project-links"> <i class="fa fa-laptop"></i> <a href="https://malihat.github.io/techdegree-project-2/" class="links" target="_blank"> Project </a> </button> 
 						</div>
 					</div>
 				</div>
@@ -453,30 +455,49 @@
 			}
 
 			// Get the modal
-			var modal = document.querySelectorAll("#myModal");
+			let modal = document.querySelectorAll("#myModal");
 
 			// Get the button that opens the modal
-			var images = document.querySelectorAll("#images");
-			var title = document.querySelectorAll('#project-title');
+			let images = document.querySelectorAll("#images");
+			let title = document.querySelectorAll('#project-title');
 
 			// Get the <span> element that closes the modal
 			var span = document.getElementsByClassName("close");
 
+			// Made a closure because IE does not support let in for loop and IE doesnt support forEach function 
 			// When the user clicks on the image or its title, the modal opens
-			for (let i=0; i<images.length; i++) {
-				images[i].onclick = function() {
-					console.log(images[i], "  ", modal[i]);
-					modal[i].style.display = "block";
-				}
-				span[i].onclick = function() {
-					modal[i].style.display = "none";
-				}
-				window.onclick = function(event) {
-					if (event.target == modal[i]) {
-						modal[i].style.display = "none";
+			function showModal(j) {
+				return function() {
+					images[j].onclick = function() {
+						modal[j].style.display = "block";
+					}
+					title[j].onclick = function() {
+						modal[j].style.display = "block";
+					}
+					span[i].onclick = function() {
+						modal[j].style.display = "none";
 					}
 				}
 			}
+			for (var i=0; i<images.length; i++) {
+				showModal(i)();
+			}
+
+			//This code works in Chrome but not in IE. 
+			// for (let i=0; i<images.length; i++) {
+			// 	images[i].onclick = function() {
+			// 		// modal[i].style.display = "block";
+			// 		console.log(i);
+			// 	}
+			// 	span[i].onclick = function() {
+			// 		modal[i].style.display = "none";
+			// 	}
+			// 	// window.onclick = function(event) {
+			// 	// 	if (event.target == modal[i]) {
+			// 	// 		modal[i].style.display = "none";
+			// 	// 	}
+			// 	// }
+			// }
 
 			// When hamburger menu is clicked, the dropdown menu shows
 			var hamburger = document.querySelector('#hamburger');
@@ -488,3 +509,4 @@
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 		<script> AOS.init(); </script>
 	</body>
+</html>
