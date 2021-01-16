@@ -203,11 +203,15 @@ div.modal-footer {
 }
 .card {
     margin-top: -35px;
-    height: 200px;
+    height: 250px;
 }
 .card-title {
     margin: 18px 15px 10px;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.card-text {
+    font-size: 0.9rem;
 }
 
 /* Project Section */
@@ -303,6 +307,9 @@ img#images.small-img {
     .lower-two {
         margin-top: 0;
     }
+    .card {
+        height: 200px;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -322,6 +329,9 @@ img#images.small-img {
     }
     .lower-two, .second {
         margin-top: 0;
+    }
+    .card {
+        height: 200px;
     }
 }
 
@@ -345,5 +355,8 @@ img#images.small-img {
     }
     .lower-two, .second {
         margin-top: 0;
+    }
+    .card {
+        height: 200px;
     }
 }
